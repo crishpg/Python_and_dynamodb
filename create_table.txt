@@ -1,0 +1,11 @@
+aws dynamodb create-table \
+    --table-name demo-dynamo-python \
+    --attribute-definitions \
+        AttributeName=customer_id,AttributeType=S \
+        AttributeName=order_id,AttributeType=S \
+    --key-schema \
+        AttributeName=customer_id,KeyType=HASH \
+        AttributeName=order_id,KeyType=RANGE \
+    --provisioned-throughput \
+        ReadCapacityUnits=5,WriteCapacityUnits=5 \
+    --table-class STANDARD
